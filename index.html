@@ -152,6 +152,53 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-configs/sorts" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        {"":["github访问慢问题.md","vim使用.md","kvc原理.md","hello-world.md","git使用.md","charles抓包配置.md","github访问慢问题","vim使用","kvc原理","git使用","charles抓包配置"],"__positions":{"github访问慢问题":7,"charles抓包配置":11,"kvc原理":9,"hello-world.md":4,"charles抓包配置.md":6,"vim使用.md":2,"git使用":10,"kvc原理.md":3,"git使用.md":5,"vim使用":8,"github访问慢问题.md":1},"__raw_positions":{"github访问慢问题":7,"charles抓包配置":11,"kvc原理":9,"hello-world.md":4,"vim使用":8,"vim使用.md":2,"git使用":10,"kvc原理.md":3,"git使用.md":5,"charles抓包配置.md":6,"github访问慢问题.md":1}}
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/01/configs/sorts/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -260,6 +307,73 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/03/01/git使用/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-github访问慢问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/24/github访问慢问题/">github访问慢问题</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/24/github访问慢问题/" class="archive-article-date">
+  	<time datetime="2018-07-24T09:26:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="github-访问慢-及github-com-ping不通问题"><a href="#github-访问慢-及github-com-ping不通问题" class="headerlink" title="github 访问慢 及github.com ping不通问题"></a>github 访问慢 及github.com ping不通问题</h3><p><img src="/2018/07/24/github访问慢问题/2018-07-24-14-20-17.png" alt><br>DNS解析问题<br>前往文件夹 /etc/hosts    修改hosts文件</p>
+<h3 id="增加host映射"><a href="#增加host映射" class="headerlink" title="增加host映射"></a>增加host映射</h3><p>访问<a href="https://www.ipaddress.com，找到页面中下方的“IP" target="_blank" rel="noopener">https://www.ipaddress.com，找到页面中下方的“IP</a> Address Tools - Quick Links”，分别输入github.global.ssl.fastly.net和github.com，查询ip地址<br>增加github.global.ssl.fastly.net和github.com的映射。<br>访问 <a href="http://github.global.ssl.fastly.net.ipaddress.com/" target="_blank" rel="noopener">http://github.global.ssl.fastly.net.ipaddress.com/</a> 查找<br><img src="/2018/07/24/github访问慢问题/./_image/2018-07-24-14-23-47.png" alt><br>151.101.185.194 github.global.ssl.fastly.net</p>
+<p>访问 <a href="http://github.com.ipaddress.com/" target="_blank" rel="noopener">http://github.com.ipaddress.com/</a><br><img src="/2018/07/24/github访问慢问题/./_image/2018-07-24-14-24-21.png" alt><br>192.30.253.112 github.com<br>112不可以的话试试113</p>
+<h3 id="更新DNS缓存"><a href="#更新DNS缓存" class="headerlink" title="更新DNS缓存"></a>更新DNS缓存</h3><p>命令行输入：sudo dscacheutil -flushcache，使增加的映射生效。</p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>把hosts文件复制到桌面修改，避免文件格式出现问题</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/24/github访问慢问题/">展开全文 >></a>
         </p>
       
 
