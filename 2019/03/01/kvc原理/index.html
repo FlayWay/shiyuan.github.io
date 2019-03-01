@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>kvc原理 | sunshiyuan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="kvc底层实现原理 kvc内部实现机制 valueForKey方法内部机制 setValueForKey方法内部机制   根据kvc内部实现机制实现自定义KVC kvc集合运算符 kvc监听数组的变化   KVC内部机制11. valueForKey方法内部实现机制(取值) 首先先查找相关方法先查找getKey方法，没有找到则查找key方法，key方法没有找到则找到getIsKey方法 这些方法均">
+  <meta name="description" content="kvc底层实现原理 kvc内部实现机制 valueForKey方法内部机制 setValueForKey方法内部机制   根据kvc内部实现机制实现自定义KVC kvc集合运算符 kvc监听数组的变化   KVC内部机制11. valueForKey方法内部实现机制(取值)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="kvc原理">
-<meta property="og:url" content="http://yoursite.com/2018/04/27/kvc原理/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/03/01/kvc原理/index.html">
 <meta property="og:site_name" content="sunshiyuan">
-<meta property="og:description" content="kvc底层实现原理 kvc内部实现机制 valueForKey方法内部机制 setValueForKey方法内部机制   根据kvc内部实现机制实现自定义KVC kvc集合运算符 kvc监听数组的变化   KVC内部机制11. valueForKey方法内部实现机制(取值) 首先先查找相关方法先查找getKey方法，没有找到则查找key方法，key方法没有找到则找到getIsKey方法 这些方法均">
+<meta property="og:description" content="kvc底层实现原理 kvc内部实现机制 valueForKey方法内部机制 setValueForKey方法内部机制   根据kvc内部实现机制实现自定义KVC kvc集合运算符 kvc监听数组的变化   KVC内部机制11. valueForKey方法内部实现机制(取值)">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-01T08:26:55.477Z">
+<meta property="og:updated_time" content="2019-03-01T08:36:27.336Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kvc原理">
-<meta name="twitter:description" content="kvc底层实现原理 kvc内部实现机制 valueForKey方法内部机制 setValueForKey方法内部机制   根据kvc内部实现机制实现自定义KVC kvc集合运算符 kvc监听数组的变化   KVC内部机制11. valueForKey方法内部实现机制(取值) 首先先查找相关方法先查找getKey方法，没有找到则查找key方法，key方法没有找到则找到getIsKey方法 这些方法均">
+<meta name="twitter:description" content="kvc底层实现原理 kvc内部实现机制 valueForKey方法内部机制 setValueForKey方法内部机制   根据kvc内部实现机制实现自定义KVC kvc集合运算符 kvc监听数组的变化   KVC内部机制11. valueForKey方法内部实现机制(取值)">
   
     <link rel="alternative" href="/atom.xml" title="sunshiyuan" type="application/atom+xml">
   
@@ -166,8 +166,8 @@
   
 
         
-        <a href="/2018/04/27/kvc原理/" class="archive-article-date">
-  	<time datetime="2018-04-27T08:24:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-27</time>
+        <a href="/2019/03/01/kvc原理/" class="archive-article-date">
+  	<time datetime="2019-03-01T08:24:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-01</time>
 </a>
         
       </header>
@@ -185,6 +185,7 @@
 <li>kvc监听数组的变化 </li>
 </ol>
 <h3 id="KVC内部机制"><a href="#KVC内部机制" class="headerlink" title="KVC内部机制"></a>KVC内部机制</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1. valueForKey方法内部实现机制(取值)</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>首先先查找相关方法<br>先查找<code>getKey</code>方法，没有找到则查找<code>key</code>方法，<code>key</code>方法没有找到则找到<code>getIsKey</code>方法 这些方法均未找到则查找<code>countOfKey</code>和<code>objectInKeyAtIndex</code>方法 ,<code>countOfKey</code>返回个数 ，<code>objectInKeyAtIndex</code>设置数组内容。以上方法均未找到则根据kvc的机制执行 <code>accessInstanceVariablesDirectly</code> 根据<code>accessInstanceVariablesDirectly</code>返回值为NO 禁用类使用KVC，直接调用<code>vauleForUndefinedKey</code>方法抛出异常，返回YES,则查找该成员的系列成员变量 查找优先级为  _key &gt; _isKey &gt; key &gt; isKey  ，上述成员变量均为找到则调用<code>vauleForUndefinedKey</code>抛出异常。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2.setValue: forKey：(设置值)</span><br></pre></td></tr></table></figure></p>
 <p>首先查找<code>setKey</code>方法,找不到找<code>setIsKey</code>方法，两个方法均为找到则根据kvc机制调用<code>accessInstanceVariablesDirectly</code>方法查看是否禁用kvc，返回NO，直接调用<code>setValue: undefinedKey</code>方法 抛出异常，返回yes,查找该成员的系列成员变量，查找优先级顺序为 _key &gt; _isKey &gt; key &gt; isKey;以上成员变量均未找到则调用<code>setValue: undefinedKey</code>方法直接抛出异常。</p>
 <h3 id="自定义KVC实现"><a href="#自定义KVC实现" class="headerlink" title="自定义KVC实现"></a>自定义KVC实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#import &lt;Foundation/Foundation.h&gt;</span><br><span class="line">@interface NSObject (MYKVC)</span><br><span class="line">//自定义设置值方法</span><br><span class="line">-(void)setMyValue:(id)value forKey:(NSString *)key;</span><br><span class="line">//自定义取值方法</span><br><span class="line">-(id)myVauleForKey:(NSString *)key;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
@@ -273,7 +274,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/04/27/kvc原理/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/03/01/kvc原理/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -287,15 +288,20 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/05/09/charles抓包配置/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/03/01/configs/sorts/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          charles抓包配置
+          (no title)
         
       </div>
     </a>
   
+  
+    <a href="/2019/03/01/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
