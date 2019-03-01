@@ -179,7 +179,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="2019-03-01-08-59-45.png" alt><br>You can do that like this:<br>nore只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。那么解决方法就是先把本地缓存删除（改变成未track状态），然后再提交：<br>git rm -r –cached .<br>git add .<br>git commit -m ‘update .gitignore’<br><code>`</code><br>ls -a 显示所有文件夹  包括隐藏文件</p>
+        <p><img src="/2019/03/01/git使用/2019-03-01-08-59-45.png" alt><br>You can do that like this:<br>nore只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。那么解决方法就是先把本地缓存删除（改变成未track状态），然后再提交：<br>git rm -r –cached .<br>git add .<br>git commit -m ‘update .gitignore’<br><code>`</code><br>ls -a 显示所有文件夹  包括隐藏文件</p>
 <p>git status  查看被修改的文件<br> 显示commit历史，以及每次commit发生变更的文件<br>git log –stat<br>查看文件修改的具体内容<br>git log -p 文件路径</p>
 <a id="more"></a>
 <h3 id="撤销上次提交"><a href="#撤销上次提交" class="headerlink" title="撤销上次提交"></a>撤销上次提交</h3><p>git log 找到想要撤销的操作之前的一次提交的commitid<br> git reset –hard  commitid<br>如果提交到远程，需要将远程的分支代码也撤销<br>执行 git  push origin 分支名字 –force<br>// HEAD  指向master<br>// 为了覆盖掉远端的版本信息，使远端的仓库也回退到相应的版本，需要加上参数–force<br>git  push origin 分支名字 –force<br>git push origin HEAD –force</p>
@@ -194,8 +194,8 @@
 <ol>
 <li>生成rsa秘钥对</li>
 <li>ssh-keygen -t rsa -C ‘邮箱名字’</li>
-<li>提示生成<br><img src="2019-03-01-09-01-34.png" alt><br>直接回车</li>
-<li><p>要求输入密码<br><img src="2019-03-01-09-01-48.png" alt><br>可以不用输入<br>以上操作完成 生成公钥私钥对<br><img src="2019-03-01-09-02-04.png" alt></p>
+<li>提示生成<br><img src="/2019/03/01/git使用/2019-03-01-09-01-34.png" alt><br>直接回车</li>
+<li><p>要求输入密码<br><img src="/2019/03/01/git使用/2019-03-01-09-01-48.png" alt><br>可以不用输入<br>以上操作完成 生成公钥私钥对<br><img src="/2019/03/01/git使用/2019-03-01-09-02-04.png" alt></p>
 </li>
 <li><p>查看公钥内容   把公钥传到服务器<br>cat ~/.ssh/id_rsa.pub</p>
 </li>
